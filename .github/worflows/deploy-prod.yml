@@ -1,0 +1,22 @@
+name: Deploy staging to Heroku
+
+on: [pull_request]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Init projet
+        uses: actions/checkout@v2
+      - name: Install dependencies
+        run: yarn
+      - name: Build
+        run: yarn build
+      - name: Test
+      - run: yarn test --watchAll=false
+      - name: Heroku deploy
+        uses: akhileshns/heroku-deploy@v3.5.6
+        with:
+          heroku_api_key: ${{secrets.HEROKU_KEY}}
+          heroku_app_name: ${{secrets.HEROKU_PROD_APP}}
+          heroku_email: ${{secrets.HEROKU_EMAIL}}
