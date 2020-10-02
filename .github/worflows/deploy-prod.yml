@@ -1,8 +1,7 @@
 name: Deploy staging to Heroku
-on:
-  push:
-    branches:
-      - staging
+
+on: [pull_request]
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -19,5 +18,5 @@ jobs:
         uses: akhileshns/heroku-deploy@v3.5.6
         with:
           heroku_api_key: ${{secrets.HEROKU_KEY}}
-          heroku_app_name: ${{secrets.HEROKU_STAGING_APP}}
+          heroku_app_name: ${{secrets.HEROKU_PROD_APP}}
           heroku_email: ${{secrets.HEROKU_EMAIL}}
