@@ -1,11 +1,12 @@
-name: Deploy staging to Heroku
+name: Deploy prod to Heroku
+
 on:
-  push:
-    branches:
-      - staging
+  pull_request:
+    branchs:
+      master
+
 jobs:
   deploy:
-    name: Deploy to Heroku Staging App
     runs-on: ubuntu-latest
     steps:
       - name: Init projet
@@ -15,10 +16,10 @@ jobs:
       - name: Build
         run: yarn build
       - name: Test
-      - run: yarn test --watchAll=false
+        run: yarn test --watchAll=false
       - name: Heroku deploy
         uses: akhileshns/heroku-deploy@v3.5.6
         with:
           heroku_api_key: ${{secrets.HEROKU_KEY}}
-          heroku_app_name: ${{secrets.HEROKU_STAGING_APP}}
+          heroku_app_name: ${{secrets.HEROKU_PROD_APP}}
           heroku_email: ${{secrets.HEROKU_EMAIL}}
