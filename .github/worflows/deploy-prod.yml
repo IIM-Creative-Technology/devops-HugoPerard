@@ -1,6 +1,9 @@
-name: Deploy staging to Heroku
+name: Deploy prod to Heroku
 
-on: [pull_request]
+on:
+  pull_request:
+    branchs:
+      master
 
 jobs:
   deploy:
