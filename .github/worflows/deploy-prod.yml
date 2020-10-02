@@ -1,7 +1,7 @@
 name: Deploy prod to Heroku
 
 on:
-  pull_request:
+  push:
     branchs:
       master
 
