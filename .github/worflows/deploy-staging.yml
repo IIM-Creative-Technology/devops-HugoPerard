@@ -5,6 +5,7 @@ on:
       - staging
 jobs:
   deploy:
+    name: Deploy to Heroku Staging App
     runs-on: ubuntu-latest
     steps:
       - name: Init projet
