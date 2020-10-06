@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import Header from "./components/Header/Header";
 import { theme, ThemeProvider, CSSReset } from "@chakra-ui/core";
+import { Articles } from "./components/Articles/Articles";
 
 const breakpoints = ["30em", "48em", "62em", "80em"];
 breakpoints.sm = breakpoints[0];
@@ -19,6 +20,7 @@ function App() {
         <ThemeProvider theme={newTheme}>
             <CSSReset />
             <Header />
+            <Articles />
         </ThemeProvider>
     );
 }
