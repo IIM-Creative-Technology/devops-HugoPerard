@@ -12,7 +12,7 @@ export const Articles = () => {
     useEffect(() => {
         getAllArticles();
         console.log(articles);
-    }, []);
+    }, [getAllArticles]);
 
     const articleJson = {
         title: 'Premier article du site',
