@@ -11,8 +11,7 @@ export const Articles = () => {
 
     useEffect(() => {
         getAllArticles();
-        console.log(articles);
-    }, [getAllArticles]);
+    }, []);
 
     const articleJson = {
         title: 'Premier article du site',
@@ -21,6 +20,7 @@ export const Articles = () => {
         photos: []
     }
     console.log(articleJson);
+    console.log(articles);
 
     return (
         <div>
