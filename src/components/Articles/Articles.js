@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import { Box, Input, Button, Heading, Image, Flex, Text, VStack, StackDivider } from '@chakra-ui/core';
+import { Box, Input, Button, Heading, Image, Flex, Text, VStack, StackDivider, useToast } from '@chakra-ui/core';
 import {addArticles, getArticles} from '../../services/articles';
 
 /*
@@ -13,18 +13,28 @@ const articleJson = {
 
 export const Articles = () => {
     const [articles, setArticles] = useState([]);
+    const toast = useToast();
 
     const getAllArticles = async () => {
-      const { data, status } = await getArticles;
-      if (status === 200) setArticles(data);
+        try {
+            const { data, status } = await getArticles;
+            if (status === 200) setArticles(data);
+        } catch (e) {
+            toast.error("Erreur lors du chargement des articles")
+        }
     };
 
     useEffect(() => {
         getAllArticles();
     }, []);
 
-    const handleSubmitArticleForm = values => {
-        addArticles({ title: values.title, text: values.text, cover: values.cover })
+    const handleSubmitArticleForm = async values => {
+        try {
+            await addArticles({ title: values.title, text: values.text, cover: values.cover });
+        } catch (e) {
+            toast.error("Erreur lors de l'ajout d'un article")
+        }
+
     };
 
     return (
