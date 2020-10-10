@@ -24,7 +24,7 @@ export const Articles = () => {
     }, []);
 
     const handleSubmitArticleForm = values => {
-        addArticles({ title: values.title, text: values.text})
+        addArticles({ title: values.title, text: values.text, cover: values.cover })
     };
 
     return (
@@ -51,9 +51,11 @@ export const Articles = () => {
                 <Box color="black">
                     <form onSubmit={handleSubmitArticleForm}>
                         <Text>Titre</Text>
-                        <Input id="title" required/>
+                        <Input id="title" required />
                         <Text>Texte</Text>
-                        <Input id="text" required/>
+                        <Input id="text" required />
+                        <Text>Image</Text>
+                        <Input type="file" id="cover"/>
                         <Button type="submit">Valider</Button>
                     </form>
                 </Box>
