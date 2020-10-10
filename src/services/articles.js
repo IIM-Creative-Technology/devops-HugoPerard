@@ -1,3 +1,7 @@
 import axios from 'axios';
 
-export const getArticles = axios.get(`https://jsonbox.io/box_2ab3eea4f856ec0be8a5`);
+const endpoint = 'https://jsonbox.io/box_' + process.env.JSONBOX_ID;
+
+export const getArticles = axios.get(endpoint + `/articles`);
+
+export const addArticles = (newArticle) => axios.post(endpoint + `/articles`, newArticle);

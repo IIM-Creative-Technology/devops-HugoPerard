@@ -1,10 +1,13 @@
 import React from 'react';
+import { Box } from '@chakra-ui/core';
 import { Header } from './components/Header/Header';
 import { Articles } from './components/Articles/Articles';
 
 export const Home = () => (
-    <div>
-        <Header/>
-        <Articles/>
-    </div>
+    <Box flexDirection="column" color="white">
+        <Header />
+        <Box>
+            <Articles />
+        </Box>
+    </Box>
 )

@@ -1,6 +1,5 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Switch, Route } from 'react-router-dom';
-import { useLocation } from 'react-use';
 import { Home } from './Home'
 
 export const Routes = () =>  (

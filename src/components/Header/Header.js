@@ -31,8 +31,8 @@ export const Header = props => {
                         <SocialBar />
                     </HStack>
                     <Box
-                        display={{ sm: show ? "block" : "none", md: "flex" }}
-                        width={{ sm: "full", md: "auto" }}
+                        display={{ sm: show ? "block" : "none", lg: "flex" }}
+                        width={{ sm: "full", lg: "auto" }}
                         alignItems="center"
                         flexGrow={1}
                         placement="bottom"
@@ -41,7 +41,7 @@ export const Header = props => {
                     </Box>
                 </VStack>
 
-                <Box display={{ sm: "block", md: "none" }} onClick={handleToggle} p={3} borderWidth="1px">
+                <Box display={{ sm: "block", lg: "none" }} onClick={handleToggle} p={3} borderWidth="1px">
                     <svg
                         fill="white"
                         width="12px"
