@@ -1,13 +1,15 @@
 import React, {useEffect, useState} from 'react';
-import { Box, Input, Label, Button, Heading, Image, Flex, Text, VStack, StackDivider } from '@chakra-ui/core';
+import { Box, Input, Button, Heading, Image, Flex, Text, VStack, StackDivider } from '@chakra-ui/core';
 import {addArticles, getArticles} from '../../services/articles';
 
+/*
 const articleJson = {
     title: 'Deuxième article du site',
     text: 'Voici le deuxième article du site',
     cover: 'https://s3.static-footeo.com/uploads/tourville-sur-arques/logo__qep8uc.png',
     photos: []
 };
+*/
 
 export const Articles = () => {
     const [articles, setArticles] = useState([]);
@@ -22,7 +24,7 @@ export const Articles = () => {
     }, []);
 
     const handleSubmitArticleForm = values => {
-        console.log(values);
+        addArticles({ title: values.title, text: values.text})
     };
 
     return (
