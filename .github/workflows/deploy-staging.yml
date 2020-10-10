@@ -16,9 +16,9 @@ jobs:
         run: yarn build
       - name: Linters
         uses: wearerequired/lint-action@v1
-          with:
-            eslint: true
-            prettier: true
+        with:
+          eslint: true
+          prettier: true
       - name: Test
         run: yarn test --watchAll=false
       - name: Heroku deploy
