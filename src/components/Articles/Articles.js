@@ -1,44 +1,41 @@
-import React, {useEffect, useState} from 'react';
-import { Box, Input, Button, Heading, Image, Flex, Text, VStack, StackDivider, useToast } from '@chakra-ui/core';
-import {addArticles, getArticles} from '../../services/articles';
-
-/*
-const articleJson = {
-    title: 'Deuxième article du site',
-    text: 'Voici le deuxième article du site',
-    cover: 'https://s3.static-footeo.com/uploads/tourville-sur-arques/logo__qep8uc.png',
-    photos: []
-};
-*/
+import React, {useCallback, useEffect, useState} from 'react';
+import { Box, Input, Button, Heading, Image, Flex, Text, Textarea, VStack, StackDivider, useToast } from '@chakra-ui/core';
+import { addArticles, getArticles } from '../../services/articles';
 
 export const Articles = () => {
     const [articles, setArticles] = useState([]);
+    const [hasError, setError] = useState(false);
     const toast = useToast();
 
-    const getAllArticles = async () => {
-        try {
-            const { data, status } = await getArticles;
-            if (status === 200) setArticles(data);
-        } catch (e) {
-            toast.error("Erreur lors du chargement des articles")
+    const getAllArticles = useCallback(async () => {
+        const { data, status } = await getArticles;
+        if (status === 200) {
+            setArticles(data);
+        } else {
+            setError(true);
         }
-    };
+    }, []);
+
 
     useEffect(() => {
         getAllArticles();
-    }, []);
+    }, [getAllArticles]);
 
-    const handleSubmitArticleForm = async values => {
+    const handleSubmitArticleForm = async event => {
         try {
-            await addArticles({ title: values.title, text: values.text, cover: values.cover });
+            await addArticles({
+                title: event.target.title.value,
+                text: event.target.text.value,
+                cover: event.target.cover.value
+            });
         } catch (e) {
-            toast.error("Erreur lors de l'ajout d'un article")
+            toast({title: "Erreur lors de l'ajout d'un article"});
         }
-
     };
 
     return (
         <div>
+            {hasError && <Text>Une erreur est survenue lors du chargement des données</Text>}
             <VStack my="6" spacing={10} divider={<StackDivider borderColor="gray.200" />}>
                 {articles && articles.map((article) => (
                     <Flex
@@ -61,11 +58,11 @@ export const Articles = () => {
                 <Box color="black">
                     <form onSubmit={handleSubmitArticleForm}>
                         <Text>Titre</Text>
-                        <Input id="title" required />
+                        <Input name="title" required />
                         <Text>Texte</Text>
-                        <Input id="text" required />
+                        <Textarea height="10rem" name="text" required />
                         <Text>Image</Text>
-                        <Input type="file" id="cover"/>
+                        <Input type="file" name="cover"/>
                         <Button type="submit">Valider</Button>
                     </form>
                 </Box>
