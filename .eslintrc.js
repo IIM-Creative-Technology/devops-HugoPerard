@@ -14,5 +14,7 @@ module.exports = {
         "react"
     ],
     "rules": {
+        "react/no-children-prop": "off",
+        "react/no-find-dom-node": "off"
     }
 };
