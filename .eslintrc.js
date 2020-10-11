@@ -15,6 +15,8 @@ module.exports = {
     ],
     "rules": {
         "react/no-children-prop": "off",
-        "react/no-find-dom-node": "off"
+        "react/no-find-dom-node": "off",
+        "react/no-unescaped-entities": "off",
+        "react/jsx-key": "off"
     }
 };
