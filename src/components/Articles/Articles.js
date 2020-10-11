@@ -1,11 +1,10 @@
 import React, {useCallback, useEffect, useState} from 'react';
-import { Heading, Image, Flex, Text, VStack, StackDivider, useToast } from '@chakra-ui/core';
-import { addArticles, getArticles } from '../../services/articles';
+import { Heading, Image, Flex, Text, VStack, StackDivider } from '@chakra-ui/core';
+import { getArticles } from '../../services/articles';
 
 export const Articles = () => {
     const [articles, setArticles] = useState([]);
     const [hasError, setError] = useState(false);
-    const toast = useToast();
 
     const getAllArticles = useCallback(async () => {
         const { data, status } = await getArticles;
