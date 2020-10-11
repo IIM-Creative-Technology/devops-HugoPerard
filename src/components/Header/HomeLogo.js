@@ -12,7 +12,7 @@ export const HomeLogo = () => (
         </Box>
         <Center ml={4}>
             <Box align="right">
-                <Heading fontSize="xl" letterSpacing={"-.1rem"}>Etoile Sportive Tourville</Heading>
+                <Heading as="h1" fontSize="xl" letterSpacing={"-.1rem"}>Etoile Sportive Tourville</Heading>
                 <Text fontSize="sm">Fondée en 1938</Text>
             </Box>
         </Center>

@@ -1,6 +1,6 @@
-name: Deploy staging to Heroku
+name: CI staging
 on:
-  push:
+  pull_request:
     branches:
       - staging
 jobs:
@@ -18,9 +18,3 @@ jobs:
         run: yarn run eslint . --ext .js
       - name: Test
         run: yarn test --watchAll=false
-      - name: Heroku deploy
-        uses: akhileshns/heroku-deploy@v3.5.6
-        with:
-          heroku_api_key: ${{secrets.HEROKU_KEY}}
-          heroku_app_name: ${{secrets.HEROKU_STAGING_APP}}
-          heroku_email: ${{secrets.HEROKU_EMAIL}}
