@@ -55,17 +55,6 @@ export const Articles = () => {
                     </Flex>
                     )
                 )}
-                <Box color="black">
-                    <form onSubmit={handleSubmitArticleForm}>
-                        <Text>Titre</Text>
-                        <Input name="title" required />
-                        <Text>Texte</Text>
-                        <Textarea height="10rem" name="text" required />
-                        <Text>Image</Text>
-                        <Input type="file" name="cover"/>
-                        <Button type="submit">Valider</Button>
-                    </form>
-                </Box>
             </VStack>
         </div>
     )
