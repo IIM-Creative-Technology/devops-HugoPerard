@@ -72,3 +72,31 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/tr
 staging : https://estourville-staging.herokuapp.com/
 
 prod : https://estourville-prod.herokuapp.com/
+
+ ### CI / CD
+ 
+ Lorsque l'on pull request sur staging, on effectue plusieurs actions :
+ 1. On initialise le projet avec l'action "actions/checkout@v2"
+ 2. On installe les dépendances avec la commande `yarn`
+ 3. On build le projet avec la commande `yarn build`
+ 4. On analyse le code avec le linter eslint via la commande `yarn run eslint . --ext .js`
+ 5. On effectue des tests via la commande `yarn test --watchAll=false`
+
+Lorsque l'on push sur staging, on effectue plusieurs actions :
+1. On initialise le projet avec l'action "actions/checkout@v2"
+2. On installe les dépendances avec la commande `yarn`
+3. On build le projet avec la commande `yarn build`
+4. On analyse le code avec le linter eslint via la commande `yarn run eslint . --ext .js`
+5. On effectue des tests via la commande `yarn test --watchAll=false`
+6. On déploie sur l'app staging sur heroku avec l'action "akhileshns/heroku-deploy@v3.5.6" grâce aux variables d'environnement d'Heroku renseignées sur github
+
+Lorsque l'on effectue une pull request sur master, on effectue plusieurs actions :
+1. On initialise le projet avec l'action "actions/checkout@v2"
+2. On installe les dépendances avec la commande `yarn`
+3. On build le projet avec la commande `yarn build`
+
+Lorsque l'on push sur master, on effectue plusieurs actions :
+1. On initialise le projet avec l'action "actions/checkout@v2"
+2. On installe les dépendances avec la commande `yarn`
+3. On build le projet avec la commande `yarn build`
+4. On déploie sur l'app prod sur heroku avec l'action "akhileshns/heroku-deploy@v3.5.6" grâce aux variables d'environnement d'Heroku renseignées sur github

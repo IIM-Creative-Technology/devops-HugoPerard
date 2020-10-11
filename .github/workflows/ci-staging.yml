@@ -1,0 +1,20 @@
+name: CI staging
+on:
+  pull_request:
+    branches:
+      - staging
+jobs:
+  deploy:
+    name: Deploy to Heroku Staging App
+    runs-on: ubuntu-latest
+    steps:
+      - name: Init projet
+        uses: actions/checkout@v2
+      - name: Install dependencies
+        run: yarn
+      - name: Build
+        run: yarn build
+      - name: Run ESLint
+        run: yarn run eslint . --ext .js
+      - name: Test
+        run: yarn test --watchAll=false
