@@ -1,5 +1,5 @@
 import React, {useCallback, useEffect, useState} from 'react';
-import { Box, Input, Button, Heading, Image, Flex, Text, Textarea, VStack, StackDivider, useToast } from '@chakra-ui/core';
+import { Heading, Image, Flex, Text, VStack, StackDivider, useToast } from '@chakra-ui/core';
 import { addArticles, getArticles } from '../../services/articles';
 
 export const Articles = () => {
@@ -21,6 +21,7 @@ export const Articles = () => {
         getAllArticles();
     }, [getAllArticles]);
 
+    /*
     const handleSubmitArticleForm = async event => {
         try {
             await addArticles({
@@ -32,6 +33,7 @@ export const Articles = () => {
             toast({title: "Erreur lors de l'ajout d'un article"});
         }
     };
+    */
 
     return (
         <div>
